@@ -2,24 +2,20 @@
 ** Quick Start
    Using this package is quite simple. Put the files under a local
    directory and add this directory to load path:
-   
-   #+begin_src elisp
-     (add-to-list 'load-path "/path/to/your/directory")   
-   #+end_src
+
+   (add-to-list 'load-path "/path/to/your/directory")   
    
    Then add these lines to your emacs's initial file:
    
-   #+begin_src elisp
-     (setq dp-userid "Your user name")
-     (setq dp-userpass "Your password")
-     (setq dp-homework-file "/path/to/store/deadlines")
-   #+end_src
+   (setq dp-userid "Your user name")
+   
+   (setq dp-userpass "Your password")
+
+   (setq dp-homework-file "/path/to/store/deadlines")
 
    Then you can use:
 
-   #+begin_src elisp
-     (dp-update-deadline-and-notify)
-   #+end_src
+   (dp-update-deadline-and-notify)
 
    And if you only want to write these deadlines to a file, use M-x
    dp-write-deadlines-to-file instead.
