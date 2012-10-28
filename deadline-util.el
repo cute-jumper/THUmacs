@@ -163,8 +163,9 @@ Called by `dp-read-deadlines-from-file'"
 (defun dp-read-deadlines-from-file (file)
   "Get deadlines from the contents previous stored in the file"
   (interactive "FRead from file: ")  
-  (let (prev-deadeline-alist)
-    (with-current-buffer (find-file-noselect file t)
+  (let ((buf (find-file-noselect file t))
+        prev-deadeline-alist)
+    (with-current-buffer buf
       (while (dp-narrow-to-get-next-heading "^\\* ")
         (save-excursion
           (unless
@@ -175,6 +176,7 @@ Called by `dp-read-deadlines-from-file'"
            (cons (dp-get-all-sub-headings 
                   (dp-buffer-string-no-properties))
                  prev-deadeline-alist)))))
+    (kill-buffer buf)
     (reverse prev-deadeline-alist)))
 
 (defun dp-update-deadline-and-notify ()
