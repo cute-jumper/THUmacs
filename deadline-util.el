@@ -25,6 +25,7 @@
 
 ;;; Code:
 
+(require 'notifications)
 (require 'deadline-parser)
 
 ;; Variable for customization
@@ -101,7 +102,6 @@ https://github.com/dengste/org-caldav/blob/master/org-caldav.el"
 (defun dp-send-notify (diff)
   "Send a system notification according to the difference
 Input is the return value of `dp-diff-two-alist'"
-  (eval-when-compile (require 'notifications))
   (let ((body "")
         (count 0))
     (loop for item in diff do
@@ -185,8 +185,8 @@ Called by `dp-read-deadlines-from-file'"
     (setq diff (dp-diff-two-alist previous current 0))
     (if (null diff)
         (message "No update~~~")
-      (dp-write-deadlines-to-file dp-homework-file current)
       (message "WTF! New homework comes out!!!"))
+    (dp-write-deadlines-to-file dp-homework-file current)
     (dp-send-notify diff)))
 
 (provide 'deadline-util)
