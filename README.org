@@ -8,9 +8,7 @@
    Then add these lines to your emacs's initial file:
    
    : (setq dp-userid "Your user name")
-   
    : (setq dp-userpass "Your password")
-
    : (setq dp-homework-file "/path/to/store/deadlines")
 
    Then you can use:
